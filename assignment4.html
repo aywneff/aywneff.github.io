@@ -12,40 +12,37 @@
     <body> 
 
         <div class="header">
-            <h1>Assignment 3: Input/ Output</h1>
+            <h1>Assignment 4: High(er) Voltage & Transistors</h1>
             <p>
             <h2> Schematic </h2>
-            <img src="SchematicA3.JPG" width = 400>
+            <img src="A4Schematic.jpg" width = 400>
             </br> 
-            <img src="CircuitA3.JPG" width = 400>
+           <!-- <img src="CircuitA3.JPG" width = 400> -->
             </br>
-            <img src = "A3Calc.jpg" width = 400>
+            <img src = "A4Calc.JPG" width = 400>
             </br>
-            I used a photoresistor and a 220 ohm resistor for the LED because according to my calculations the resistance needed to be greater than 85 ohms.  
-            Otherwise, the circuit would short.
+            I connected the transistor to a 10K ohm resistor.  The transistor can tolerate a maximum current of 0.6A.  According to my calculations the resistor needed to be at least 8.33 ohms.
+            A 10K ohm resistor results in a very small current of 0.0005A traveling through the transistor.
             </br>
             </br>
             <h2> GIF and Pictures </h2>
             </br>
-            <img src = "a3Pic.JPG" width = 400>
+            <img src = "A4Circuit.JPG" width = 400>
             </br>
-            <img src = "A3Gif.gif" width = 400>
+            <img src = "A4Circuit2.JPG" width = 400>
+            </br>
+            <img src = "A4Gif.gif" width = 400>
             </br>
             </br>
-            In this circuit the photoresistor funtions as an input and the LED serves as an output.  The photoresistor is controlled by pin A0 and the LED is controlled by pin 9.
-            A 5 volt arduino powers this circuit.  If the photoresistor senses a value greater than 700 then the LED will turn off and if the value is greater then the LED will 
-            light up with a value of 220.
+            In this circuit the photoresistor funtions as an input and the LED strip serves as an output.  The photoresistor is controlled by pin A0 and the LED strip is controlled by pin 10.
+            A 5 volt arduino and a power load of 12 volts powers this circuit.  The 5 volt arduino powers the photoresitor and the 12 volt power load powers the load of the LED strip. 
+            If the photoresistor senses an output value greater than 20 then the LED strip will turn off and if the value is greater than 10 the LED strip will light up with a value of 220.
             </br>
             </br>
             <h2> Code Snippet <h2>
-            <img src = "codeA3.JPG" width = 400>
+            <img src = "A4Code.JPG" width = 400>
             </br>
             </br>
-            <h2> Final Project </h2>
-            </br>
-            <img src = "finalSketch.jpg" width = 400>
-            </br>
-            For my final project I am thinking of making a baby mobile that rotates and plays music with LEDs that will blink and fade.
             </p>
 
         </div>
