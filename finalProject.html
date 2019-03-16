@@ -70,7 +70,199 @@ aywneff.github.io/assignment5.html
             </br>
             </br>
             <h2> The Code <h2>
-             </br>
+            </br>
+            <code>
+             #include <IRremote.h>
+
+const int RECV_PIN = 7;
+IRrecv irrecv(RECV_PIN);
+decode_results results;
+unsigned long key_value = 0;
+int state = 0;
+
+int period = 100;
+unsigned long time_now = 0;
+
+int val_4 = 0;
+int val_5 = 0;
+int val_6 = 0;
+int val_8 = 0;
+int val_10 = 0;
+
+void setup() {
+  pinMode(4, OUTPUT);
+  pinMode(5, OUTPUT);
+  pinMode(6, OUTPUT);
+  pinMode(8, OUTPUT);
+  pinMode(10, OUTPUT);
+  Serial.begin(9600);
+  irrecv.enableIRIn();
+  irrecv.blink13(true);
+}
+void loop() {
+  if (irrecv.decode(&results)) {
+
+    if (results.value == 0XFFFFFFFF)
+      results.value = key_value;
+    Serial.println(results.value);
+
+    switch (results.value) {
+      case 16753245:
+        Serial.println("power");
+        analogWrite(6, 128);
+        analogWrite(5, 128);
+        analogWrite(10, 128);
+        state = 1;
+        break;
+      case 0xFF6897:
+        Serial.println("0");
+        analogWrite(6, 0);
+        analogWrite(5, 0);
+        analogWrite(10, 0);
+        state = 0;
+        break;
+      case 0xFF30CF:
+        Serial.println("1");
+        fade5();
+        break ;
+      case 0xFF18E7:
+        Serial.println("2");
+        fade6();
+        break ;
+      case 0xFF7A85:
+        Serial.println("3");
+        fade10();
+        break ;
+    }
+
+    key_value = results.value;
+    irrecv.resume();
+  }
+  ledUpdate();
+}
+
+void ledUpdate() {
+  if (state == 1) {
+    digitalWrite(4, HIGH);
+    digitalWrite(8, HIGH);
+  } else (state == 0); {
+    digitalWrite(4, LOW);
+    digitalWrite(8, LOW);
+
+  }
+
+}
+
+void fade6 () {
+  period = 100;
+  time_now = 0;
+  while (results.value == 16718055) {
+    digitalWrite(4,HIGH);
+    digitalWrite(8,HIGH);
+    analogWrite(5, 64);
+    analogWrite(10, 128);
+    for (int val_6 = 0 ; val_6 <= 255; val_6 += 5) {
+      analogWrite(6, val_6);
+      time_now = millis();
+      while (millis() < time_now + period) {
+
+      }
+    }
+    time_now = millis();
+    period = 250;
+    while (millis() < time_now + period) {
+
+    }
+    period = 100;
+    time_now = millis();
+    for (int val_6 = 255; val_6 >= 0; val_6 -= 5) {
+      analogWrite(6, val_6);
+      time_now = millis();
+      while (millis() < time_now + period) {
+
+      }
+    }
+
+    if (irrecv.decode(&results)) {
+      irrecv.resume();
+    }
+  }
+}
+
+void fade5 () {
+  period = 100;
+  time_now = 0;
+  while (results.value == 16724175) {
+    digitalWrite(4,HIGH);
+    digitalWrite(8,HIGH);
+    analogWrite(6, 64);
+    analogWrite(10, 128);
+    for (int val_5 = 0 ; val_5 <= 255; val_5 += 5) {
+      analogWrite(5, val_5);
+      time_now = millis();
+      while (millis() < time_now + period) {
+
+      }
+    }
+    time_now = millis();
+    period = 250;
+    while (millis() < time_now + period) {
+
+    }
+    period = 100;
+    time_now = millis();
+    for (int val_5 = 255; val_5 >= 0; val_5 -= 5) {
+      analogWrite(5, val_5);
+      time_now = millis();
+      while (millis() < time_now + period) {
+
+      }
+    }
+
+    if (irrecv.decode(&results)) {
+      irrecv.resume();
+    }
+  }
+}
+
+void fade10 () {
+  period = 100;
+  time_now = 0;
+  while (results.value == 16743045) {
+    digitalWrite(4,HIGH);
+    digitalWrite(8,HIGH);
+    analogWrite(5, 64);
+    analogWrite(6, 128);
+    for (int val_10 = 0 ; val_10 <= 255; val_10 += 5) {
+      analogWrite(10, val_10);
+      time_now = millis();
+      while (millis() < time_now + period) {
+
+      }
+    }
+    time_now = millis();
+    period = 250;
+    while (millis() < time_now + period) {
+
+    }
+    period = 100;
+    time_now = millis();
+    for (int val_10 = 255; val_10 >= 0; val_10 -= 5) {
+      analogWrite(10, val_10);
+      time_now = millis();
+      while (millis() < time_now + period) {
+
+      }
+    }
+
+    if (irrecv.decode(&results)) {
+      irrecv.resume();
+    }
+  }
+}
+                                
+</code>
+         <!--   </br>
              <img src = "finalCode1.JPG" width = 400>
              </br>
              <img src = "finalCode2.JPG" width = 400>
@@ -84,7 +276,7 @@ aywneff.github.io/assignment5.html
              <img src = "finalCode6.JPG" width = 400>
              </br>
              <img src = "finalCode7.JPG" width = 400>           
-            </br>
+            </br> -->
             </p>
 
         </div>
